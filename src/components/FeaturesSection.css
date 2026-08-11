@@ -1,0 +1,116 @@
+.features-section {
+  padding: 0 0 1.5rem 1.5rem;
+  background: #050507;
+}
+
+.features-section__inner {
+  width: min(100%, var(--section-max-width));
+  margin: 0 auto;
+  padding: 1.5rem var(--section-gutter);
+  border-radius: 1.5rem;
+  background: rgba(15, 10, 26, 0.7);
+}
+
+.features-section__content {
+  width: 100%;
+}
+
+.features-section__label {
+  margin: 0;
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f0bb3e;
+}
+
+.features-section__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.features-section__card {
+  min-height: 8rem;
+  padding: 0.8rem 0.65rem 0.75rem;
+  border: 1px solid rgba(137, 162, 255, 0.8);
+  border-radius: 0.95rem;
+  background: linear-gradient(180deg, rgba(8, 10, 33, 0.86), rgba(8, 10, 33, 0.72));
+  box-shadow:
+    0 0 16px rgba(119, 161, 255, 0.5),
+    0 0 34px rgba(94, 142, 255, 0.36),
+    inset 0 0 0 1px rgba(173, 200, 255, 0.2),
+    inset 0 0 22px rgba(77, 120, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.features-section__card-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px rgba(119, 161, 255, 0.32));
+}
+
+.features-section__card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.features-section__card-title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f4f4f4;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .features-section__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .features-section {
+    padding: 0 0 1.5rem 0.9rem;
+  }
+
+  .features-section__inner {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .features-section__label {
+    font-size: 0.84rem;
+    letter-spacing: 0.14em;
+  }
+
+  .features-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .features-section__card {
+    min-height: 7rem;
+    padding: 0.7rem 0.55rem;
+  }
+
+  .features-section__card-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .features-section__card-title {
+    font-size: 0.8rem;
+  }
+}
