@@ -207,14 +207,7 @@ function FighterSelectSection() {
   }
 
   return (
-    <section
-      className="fighter-select-section"
-      aria-labelledby="fighter-select-title"
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerCancel}
-      onLostPointerCapture={handlePointerCancel}
-    >
+    <section className="fighter-select-section" aria-labelledby="fighter-select-title">
       <div className="fighter-select-section__inner">
         <button
           className="fighter-select-section__nav fighter-select-section__nav--left"
@@ -230,10 +223,6 @@ function FighterSelectSection() {
           <h2 className="fighter-select-section__title" id="fighter-select-title">
             Your Fighter
           </h2>
-          <p className="fighter-select-section__subtitle">
-            Placeholder text for the fighter intro. We can swap in the final copy
-            once it is ready.
-          </p>
 
           <div className="fighter-select-section__card">
             <h3 className="fighter-select-section__name">{activeFighter.name}</h3>
@@ -268,7 +257,13 @@ function FighterSelectSection() {
             <span aria-hidden="true">‹</span>
           </button>
 
-          <div className="fighter-select-section__stage-wrap">
+          <div
+            className="fighter-select-section__stage-wrap"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerCancel}
+            onLostPointerCapture={handlePointerCancel}
+          >
             <div className="fighter-select-section__glow" aria-hidden="true" />
             <img
               className="fighter-select-section__fighter"
