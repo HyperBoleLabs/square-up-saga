@@ -274,9 +274,7 @@
 
   .hero-section::before {
     inset: 0;
-    background:
-      linear-gradient(180deg, rgba(2, 4, 10, 0.88) 0%, rgba(2, 4, 10, 0.64) 34%, rgba(2, 4, 10, 0.95) 72%, #050507 100%),
-      var(--hero-header-image) right top/auto 64% no-repeat;
+    background: var(--hero-header-image) 70% top / auto 100% no-repeat;
   }
 
   .hero-section__shell {
@@ -297,7 +295,7 @@
 
   .hero-section__content {
     width: 100%;
-    margin-top: 18rem;
+    margin-top: 18.5rem;
     text-align: center;
   }
 
