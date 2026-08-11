@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import HeroHeader from './HeroHeader'
 import './HeroSection.css'
-import { assetUrl } from '../utils/assetUrl'
 
 const launchDate = new Date('2026-08-11T00:00:00')
 
@@ -23,23 +22,10 @@ function getTimeRemaining(targetDate: Date) {
 }
 
 function HeroSection() {
-  const audioRef = useRef<HTMLAudioElement | null>(null)
   const [countdownItems, setCountdownItems] = useState(() =>
     getTimeRemaining(launchDate),
   )
   const [showScrollButton, setShowScrollButton] = useState(true)
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false)
-
-  const playAudio = () => {
-    const audio = audioRef.current
-
-    if (!audio) {
-      return
-    }
-
-    audio.currentTime = 0
-    void audio.play()
-  }
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -68,32 +54,6 @@ function HeroSection() {
     }
   }, [])
 
-  useEffect(() => {
-    const audio = audioRef.current
-
-    if (!audio) {
-      return
-    }
-
-    const handlePlay = () => {
-      setIsAudioPlaying(true)
-    }
-
-    const handleStop = () => {
-      setIsAudioPlaying(false)
-    }
-
-    audio.addEventListener('play', handlePlay)
-    audio.addEventListener('pause', handleStop)
-    audio.addEventListener('ended', handleStop)
-
-    return () => {
-      audio.removeEventListener('play', handlePlay)
-      audio.removeEventListener('pause', handleStop)
-      audio.removeEventListener('ended', handleStop)
-    }
-  }, [])
-
   const focusPreRegisterField = () => {
     document.getElementById('launch-signup')?.scrollIntoView({ behavior: 'smooth' })
 
@@ -108,8 +68,6 @@ function HeroSection() {
 
   return (
     <section className="hero-section">
-      <audio ref={audioRef} preload="auto" src={assetUrl('voice.mp3')} />
-
       <div className="hero-section__shell">
         <HeroHeader onPreRegisterClick={focusPreRegisterField} />
 
@@ -117,14 +75,15 @@ function HeroSection() {
           <p className="hero-section__kicker" data-text="Welcome to">
             <span>Welcome to</span>
           </p>
-          <h1 className="hero-section__title" data-text="The Hustle">
-            <span>The Hustle</span>
+          <h1 className="hero-section__title" data-text="The Square Up Saga">
+            <span>The Square Up Saga</span>
           </h1>
           <p className="hero-section__subtitle">
-            Play as Paul Heyman.
-            <br />
-            Doing what he does best.
+            Jump into fast-paced battles, unlock powerful fighters, and dominate
+            the arena in Square Up Saga.
           </p>
+
+          <p className="hero-section__launch-note">Launching August 11</p>
 
           <div className="hero-section__countdown" aria-label="Launch countdown">
             {countdownItems.map((item) => (
@@ -134,30 +93,6 @@ function HeroSection() {
               </div>
             ))}
           </div>
-
-          <p className="hero-section__launch-note">Launching August 11</p>
-
-          <button
-            type="button"
-            className={`hero-section__audio-card${isAudioPlaying ? ' hero-section__audio-card--playing' : ''}`}
-            onClick={playAudio}
-            aria-pressed={isAudioPlaying}
-          >
-            <span className="hero-section__audio-icon-wrap">
-              <span className="hero-section__audio-wave hero-section__audio-wave--outer" aria-hidden="true" />
-              <span className="hero-section__audio-wave hero-section__audio-wave--inner" aria-hidden="true" />
-              <img className="hero-section__icon-svg" src={assetUrl('microphone.png')} alt="" />
-            </span>
-
-            <span className="hero-section__audio-copy">
-              <span className="hero-section__audio-title">
-                Paul knows your name
-              </span>
-              <span className="hero-section__audio-text">
-                Sign up to get trash-talked by name by Paul at launch.
-              </span>
-            </span>
-          </button>
         </div>
       </div>
 

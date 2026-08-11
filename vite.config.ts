@@ -4,7 +4,7 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/hustle-web/',
+  base: '/square-up-saga/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })

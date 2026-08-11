@@ -5,7 +5,7 @@ import { assetUrl } from '../utils/assetUrl'
 
 const klaviyoSiteId = import.meta.env.VITE_KLAVIYO_SITE_ID
 const klaviyoListId = import.meta.env.VITE_KLAVIYO_LIST_ID
-const subscribedEmailsStorageKey = 'hustle.notifyMe.subscribedEmails'
+const subscribedEmailsStorageKey = 'square-up-saga.notifyMe.subscribedEmails'
 
 function getStoredEmails() {
   if (typeof window === 'undefined') {
