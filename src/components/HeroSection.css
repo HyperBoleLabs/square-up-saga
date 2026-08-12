@@ -9,7 +9,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--hero-header-image) right top/auto 100% no-repeat;
+  background:
+  linear-gradient(90deg, rgba(2, 4, 10, 0.76) 0%, rgba(2, 4, 10, 0.6) 28%, rgba(2, 4, 10, 0.02) 62%,  rgba(2, 4, 10, 0) 100%),
+    var(--hero-header-image) right top/auto 100% no-repeat;
 }
 
 .hero-section__shell {
@@ -274,7 +276,14 @@
 
   .hero-section::before {
     inset: 0;
-    background: var(--hero-header-image) 70% top / auto 100% no-repeat;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 5, 7, 0.12) 0%,
+        rgba(5, 5, 7, 0.08) 32%,
+        rgba(5, 5, 7, 0) 56%
+      ),
+      var(--hero-header-image) 70% top / auto 100% no-repeat;
   }
 
   .hero-section__shell {

@@ -8,8 +8,8 @@ function Home() {
     <main className="page-shell">
       <HeroSection />
       <FighterSelectSection />
-      <LaunchSignupSection />
       <FeaturesSection />
+      <LaunchSignupSection />
     </main>
   )
 }
