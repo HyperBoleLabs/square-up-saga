@@ -9,7 +9,6 @@
 .hero-section__background,
 .hero-section__sky,
 .hero-section__clouds,
-.hero-section__fighters,
 .hero-section__foreground,
 .hero-section__overlay {
   position: absolute;
@@ -47,51 +46,6 @@
 .hero-section__foreground {
   background: var(--hero-foreground-image) right bottom / cover no-repeat;
   z-index: 2;
-}
-
-.hero-section__fighters {
-  z-index: 3;
-  pointer-events: none;
-}
-
-.hero-section__fighter {
-  position: absolute;
-  bottom: 7%;
-}
-
-.hero-section__fighter-frame {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: transparent;
-  opacity: 0.98;
-}
-
-.hero-section__fighter--bruce {
-  left: 58%;
-  width: min(32vw, 24rem);
-  height: min(48vw, 35rem);
-  transform: translateX(-50%);
-  z-index: 1;
-  opacity: 1;
-}
-
-.hero-section__fighter--mike {
-  left: 68%;
-  right: auto;
-  width: min(32vw, 24rem);
-  height: min(48vw, 35rem);
-  transform: translateX(-50%);
-  z-index: 2;
-  opacity: 1;
-}
-
-.hero-section__fighter--violet {
-  right: 17%;
-  width: min(32vw, 24rem);
-  height: min(48vw, 35rem);
-  z-index: 3;
-  opacity: 1;
 }
 
 .hero-section__overlay {

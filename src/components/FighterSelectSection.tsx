@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent, PointerEvent as ReactPointerEvent } from 'react'
 import './FighterSelectSection.css'
 import { assetUrl } from '../utils/assetUrl'
@@ -11,7 +11,11 @@ type Fighter = {
   stats: Array<{ label: string; value: number }>
 }
 
-const fighters: Fighter[] = [
+type FighterSelectSectionProps = {
+  showMike: boolean
+}
+
+const allFighters: Fighter[] = [
   {
     name: 'Akino',
     gifSrc: assetUrl('gifs/akino.gif'),
@@ -154,7 +158,6 @@ const backgroundBlocks = [
   { src: assetUrl('tetris-block-6.png'), modifier: 'block-6' },
   { src: assetUrl('tetris-block-7.png'), modifier: 'block-7' },
 ]
-const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
 const swipeThreshold = 45
 const klaviyoSiteId = import.meta.env.VITE_KLAVIYO_SITE_ID
 const klaviyoListId = import.meta.env.VITE_KLAVIYO_LIST_ID
@@ -196,7 +199,12 @@ function storeEmail(email: string) {
   )
 }
 
-function FighterSelectSection() {
+function FighterSelectSection({ showMike }: FighterSelectSectionProps) {
+  const fighters = useMemo(
+    () => allFighters.filter((fighter) => showMike || fighter.name !== 'Mike'),
+    [showMike],
+  )
+  const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
   const [activeIndex, setActiveIndex] = useState(
     defaultFighterIndex >= 0 ? defaultFighterIndex : 0,
   )
@@ -207,6 +215,22 @@ function FighterSelectSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formMessage, setFormMessage] = useState('')
   const [messageTone, setMessageTone] = useState<'error' | 'success' | 'info'>('info')
+
+  useEffect(() => {
+    const preferredIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
+
+    setActiveIndex((currentIndex) => {
+      if (fighters.length === 0) {
+        return 0
+      }
+
+      if (currentIndex >= fighters.length) {
+        return preferredIndex >= 0 ? preferredIndex : 0
+      }
+
+      return currentIndex
+    })
+  }, [fighters])
 
   const handlePrevious = () => {
     setActiveIndex((currentIndex) =>

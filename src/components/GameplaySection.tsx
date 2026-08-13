@@ -1,11 +1,18 @@
 import './GameplaySection.css'
 import { assetUrl } from '../utils/assetUrl'
 
-const gameplayShots = [
+type GameplaySectionProps = {
+  showMike: boolean
+}
+
+const defaultPowerUnleashedImage = assetUrl('ss-5.png')
+const noMikePowerUnleashedImage = assetUrl('no-mike-power-unleashed.png')
+
+const gameplayShots = (showMike: boolean) => [
   {
     title: 'Power Unleashed',
     caption: 'Match tiles fast to charge brutal face-offs and swing momentum in seconds.',
-    imageSrc: assetUrl('ss-5.png'),
+    imageSrc: showMike ? defaultPowerUnleashedImage : noMikePowerUnleashedImage,
     accent: 'VS Clash',
   },
   {
@@ -28,7 +35,7 @@ const gameplayShots = [
   },
 ]
 
-function GameplaySection() {
+function GameplaySection({ showMike }: GameplaySectionProps) {
   return (
     <section className="gameplay-section">
       <div className="gameplay-section__inner">
@@ -43,7 +50,7 @@ function GameplaySection() {
         </div>
 
         <div className="gameplay-section__layout">
-          {gameplayShots.map((shot) => (
+          {gameplayShots(showMike).map((shot) => (
             <article className="gameplay-section__shot" key={shot.title}>
               <div className="gameplay-section__shot-frame">
                 <img className="gameplay-section__image" src={shot.imageSrc} alt={shot.title} />

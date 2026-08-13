@@ -3,12 +3,16 @@ import FighterSelectSection from '../components/FighterSelectSection'
 import GameplaySection from '../components/GameplaySection'
 import FeaturesSection from '../components/FeaturesSection'
 
-function Home() {
+type HomeProps = {
+  showMike: boolean
+}
+
+function Home({ showMike }: HomeProps) {
   return (
     <main className="page-shell">
       <HeroSection />
-      <FighterSelectSection />
-      <GameplaySection />
+      <FighterSelectSection showMike={showMike} />
+      <GameplaySection showMike={showMike} />
       <FeaturesSection />
     </main>
   )
