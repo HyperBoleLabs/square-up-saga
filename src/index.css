@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
   font-family: 'Manrope', sans-serif;
@@ -56,4 +56,11 @@ a {
 
 .page-shell {
   min-height: 100vh;
+}
+
+.deferred-section-placeholder {
+  width: 100%;
+  background:
+    linear-gradient(180deg, rgba(6, 12, 22, 0.2), rgba(6, 12, 22, 0.04)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
 }

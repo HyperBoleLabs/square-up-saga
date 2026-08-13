@@ -53,7 +53,14 @@ function GameplaySection({ showMike }: GameplaySectionProps) {
           {gameplayShots(showMike).map((shot) => (
             <article className="gameplay-section__shot" key={shot.title}>
               <div className="gameplay-section__shot-frame">
-                <img className="gameplay-section__image" src={shot.imageSrc} alt={shot.title} />
+                <img
+                  className="gameplay-section__image"
+                  src={shot.imageSrc}
+                  alt={shot.title}
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                />
               </div>
               <div className="gameplay-section__shot-copy">
                 <span className="gameplay-section__accent">{shot.accent}</span>

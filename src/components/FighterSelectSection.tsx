@@ -369,6 +369,9 @@ function FighterSelectSection({ showMike }: FighterSelectSectionProps) {
             className={`fighter-select-section__block fighter-select-section__block--${block.modifier}`}
             src={block.src}
             alt=""
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
           />
         ))}
       </div>
@@ -496,12 +499,16 @@ function FighterSelectSection({ showMike }: FighterSelectSectionProps) {
                   className="fighter-select-section__fighter"
                   src={activeFighter.gifSrc}
                   alt={activeFighter.name}
+                  decoding="async"
                 />
                 <img
                   className="fighter-select-section__stage"
                   src={stageSrc}
                   alt=""
                   aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
 

@@ -49,7 +49,13 @@ function FeaturesSection() {
             {featureItems.map((feature) => (
               <div className="features-section__card" key={feature.name}>
                 <div className="features-section__card-icon">
-                  <img src={feature.iconSrc} alt="" />
+                  <img
+                    src={feature.iconSrc}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
                 </div>
                 <p className="features-section__card-title">{feature.name}</p>
                 <p className="features-section__card-description">{feature.description}</p>
