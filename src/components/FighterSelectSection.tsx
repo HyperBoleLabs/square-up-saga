@@ -145,6 +145,15 @@ const fighters: Fighter[] = [
 ]
 
 const stageSrc = assetUrl('stage.png')
+const backgroundBlocks = [
+  { src: assetUrl('tetris-block-1.png'), modifier: 'block-1' },
+  { src: assetUrl('tetris-block-2.png'), modifier: 'block-2' },
+  { src: assetUrl('tetris-block-3.png'), modifier: 'block-3' },
+  { src: assetUrl('tetris-block-4.png'), modifier: 'block-4' },
+  { src: assetUrl('tetris-block-5.png'), modifier: 'block-5' },
+  { src: assetUrl('tetris-block-6.png'), modifier: 'block-6' },
+  { src: assetUrl('tetris-block-7.png'), modifier: 'block-7' },
+]
 const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
 const swipeThreshold = 45
 const klaviyoSiteId = import.meta.env.VITE_KLAVIYO_SITE_ID
@@ -329,6 +338,17 @@ function FighterSelectSection() {
 
   return (
     <section className="fighter-select-section" aria-labelledby="fighter-select-title">
+      <div className="fighter-select-section__block-layer" aria-hidden="true">
+        {backgroundBlocks.map((block) => (
+          <img
+            key={block.modifier}
+            className={`fighter-select-section__block fighter-select-section__block--${block.modifier}`}
+            src={block.src}
+            alt=""
+          />
+        ))}
+      </div>
+
       <div className="fighter-select-section__inner">
         <div className="fighter-select-section__content">
           <div className="fighter-select-section__signup-card">
