@@ -68,6 +68,18 @@ function HeroSection() {
 
   return (
     <section className="hero-section">
+      <div className="hero-section__background" aria-hidden="true">
+        <div className="hero-section__sky" />
+        <div className="hero-section__clouds">
+          <div className="hero-section__cloud-track">
+            <span className="hero-section__cloud-panel" />
+            <span className="hero-section__cloud-panel" />
+          </div>
+        </div>
+        <div className="hero-section__foreground" />
+        <div className="hero-section__overlay" />
+      </div>
+
       <div className="hero-section__shell">
         <HeroHeader onPreRegisterClick={focusPreRegisterField} />
 
