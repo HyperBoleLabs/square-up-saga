@@ -11,7 +11,6 @@
 
 .launch-signup-section__card {
   min-height: 16rem;
-  padding: 2.2rem clamp(1.25rem, 4vw, 4.5rem);
   border: 0;
   border-radius: 0;
   background:
@@ -20,6 +19,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.launch-signup-section__content {
+  width: min(100%, var(--section-max-width));
+  margin: 0 auto;
+  padding: 2.2rem var(--section-gutter);
 }
 
 .launch-signup-section__header {
@@ -186,7 +191,10 @@
 
   .launch-signup-section__card {
     min-height: 13rem;
-    padding: 1.35rem 1rem 1.15rem;
+  }
+
+  .launch-signup-section__content {
+    padding: 1.35rem var(--section-gutter) 1.15rem;
   }
 
   .launch-signup-section__title {

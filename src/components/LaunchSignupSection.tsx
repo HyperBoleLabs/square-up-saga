@@ -130,62 +130,64 @@ function LaunchSignupSection() {
     <section className="launch-signup-section" id="launch-signup">
       <div className="launch-signup-section__inner">
         <div className="launch-signup-section__card">
-          <div className="launch-signup-section__header">
-            <h2 className="launch-signup-section__title">Be The First To Fight!</h2>
-            <p className="launch-signup-section__copy">
-              Pre-register now and get exclusive rewards at launch.
-            </p>
+          <div className="launch-signup-section__content">
+            <div className="launch-signup-section__header">
+              <h2 className="launch-signup-section__title">Be The First To Fight!</h2>
+              <p className="launch-signup-section__copy">
+                Pre-register now and get exclusive rewards at launch.
+              </p>
+            </div>
+
+            <form className="launch-signup-section__form" onSubmit={handleSubmit}>
+              <label className="launch-signup-section__field">
+                <span className="launch-signup-section__sr-only">Email address</span>
+                <span className="launch-signup-section__field-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 7H20V17H4V7Z"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M4 8L12 13L20 8"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <input
+                  id="pre-register-email"
+                  className="launch-signup-section__input"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter your email"
+                  autoComplete="email"
+                  disabled={isSubmitting}
+                />
+              </label>
+              <button className="launch-signup-section__notify" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Pre-Register Now'}
+              </button>
+            </form>
+
+            {formMessage ? (
+              <p
+                className={`launch-signup-section__message launch-signup-section__message--${messageTone}`}
+                role="status"
+                aria-live="polite"
+              >
+                {formMessage}
+              </p>
+            ) : null}
           </div>
-
-          <form className="launch-signup-section__form" onSubmit={handleSubmit}>
-            <label className="launch-signup-section__field">
-              <span className="launch-signup-section__sr-only">Email address</span>
-              <span className="launch-signup-section__field-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 7H20V17H4V7Z"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4 8L12 13L20 8"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <input
-                id="pre-register-email"
-                className="launch-signup-section__input"
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="Enter your email"
-                autoComplete="email"
-                disabled={isSubmitting}
-              />
-            </label>
-            <button className="launch-signup-section__notify" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting...' : 'Pre-Register Now'}
-            </button>
-          </form>
-
-          {formMessage ? (
-            <p
-              className={`launch-signup-section__message launch-signup-section__message--${messageTone}`}
-              role="status"
-              aria-live="polite"
-            >
-              {formMessage}
-            </p>
-          ) : null}
         </div>
       </div>
     </section>
