@@ -8,10 +8,6 @@ document.documentElement.style.setProperty('--app-cursor', `url("${assetUrl('cur
 document.documentElement.style.setProperty('--hero-sky-image', `url("${assetUrl('hero-sky.png')}")`)
 document.documentElement.style.setProperty('--hero-cloud-image', `url("${assetUrl('hero-cloud.png')}")`)
 document.documentElement.style.setProperty(
-  '--hero-foreground-image',
-  `url("${assetUrl('hero-foreground.png')}")`,
-)
-document.documentElement.style.setProperty(
   '--fighter-section-background-image',
   `url("${assetUrl('fighter-background.png')}")`,
 )

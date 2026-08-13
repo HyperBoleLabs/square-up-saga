@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import HeroHeader from './HeroHeader'
 import './HeroSection.css'
+import { assetUrl } from '../utils/assetUrl'
 
 const launchDate = new Date('2026-09-14T00:00:00')
 
@@ -21,11 +22,32 @@ function getTimeRemaining(targetDate: Date) {
   ]
 }
 
-function HeroSection() {
+type HeroSectionProps = {
+  showMike: boolean
+}
+
+function HeroSection({ showMike }: HeroSectionProps) {
   const [countdownItems, setCountdownItems] = useState(() =>
     getTimeRemaining(launchDate),
   )
   const [showScrollButton, setShowScrollButton] = useState(true)
+  const heroStyle = {
+    '--hero-foreground-desktop-image': `url("${assetUrl(
+      showMike
+        ? 'hero-foreground-mike-desktop.png'
+        : 'hero-foreground-no-mike-desktop.png',
+    )}")`,
+    '--hero-foreground-tablet-image': `url("${assetUrl(
+      showMike
+        ? 'hero-foreground-mike-tablet.png'
+        : 'hero-foreground-no-mike-tablet.png',
+    )}")`,
+    '--hero-foreground-mobile-image': `url("${assetUrl(
+      showMike
+        ? 'hero-foreground-mike-mobile.png'
+        : 'hero-foreground-no-mike-mobile.png',
+    )}")`,
+  } as CSSProperties
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -67,7 +89,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={heroStyle}>
       <div className="hero-section__background" aria-hidden="true">
         <div className="hero-section__sky" />
         <div className="hero-section__clouds">

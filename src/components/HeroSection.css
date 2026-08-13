@@ -17,14 +17,17 @@
 
 .hero-section__background {
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero-section__sky {
   background: var(--hero-sky-image) center top / cover no-repeat;
+  z-index: 0;
 }
 
 .hero-section__clouds {
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-section__cloud-track {
@@ -44,7 +47,7 @@
 }
 
 .hero-section__foreground {
-  background: var(--hero-foreground-image) right bottom / cover no-repeat;
+  background: var(--hero-foreground-desktop-image) center bottom / cover no-repeat;
   z-index: 2;
 }
 
@@ -342,8 +345,28 @@
     grid-template-columns: auto 1fr auto;
   }
 
-  .hero-section__cta {
-    justify-self: end;
+.hero-section__cta {
+  justify-self: end;
+}
+}
+
+@media (min-width: 500px) and (max-width: 720px) {
+  .hero-section__foreground {
+    background-image: var(--hero-foreground-tablet-image);
+    background-position: center bottom;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 900px) {
+  .hero-section__foreground {
+    background-position: 60% bottom;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1100px) {
+  .hero-section__foreground {
+    background-position: 60% bottom;
   }
 }
 
@@ -362,8 +385,9 @@
   }
 
   .hero-section__foreground {
-    background-position: 70% bottom;
-    background-size: auto 100%;
+    background-image: var(--hero-foreground-mobile-image);
+    background-position: center bottom;
+    background-size: cover;
   }
 
   .hero-section__fighters {

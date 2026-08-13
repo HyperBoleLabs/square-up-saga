@@ -10,7 +10,7 @@ type HomeProps = {
 function Home({ showMike }: HomeProps) {
   return (
     <main className="page-shell">
-      <HeroSection />
+      <HeroSection showMike={showMike} />
       <FighterSelectSection showMike={showMike} />
       <GameplaySection showMike={showMike} />
       <FeaturesSection />
