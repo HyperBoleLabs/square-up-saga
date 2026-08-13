@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { PointerEvent as ReactPointerEvent } from 'react'
+import type { FormEvent, PointerEvent as ReactPointerEvent } from 'react'
 import './FighterSelectSection.css'
 import { assetUrl } from '../utils/assetUrl'
 
@@ -147,6 +147,45 @@ const fighters: Fighter[] = [
 const stageSrc = assetUrl('stage.png')
 const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
 const swipeThreshold = 45
+const klaviyoSiteId = import.meta.env.VITE_KLAVIYO_SITE_ID
+const klaviyoListId = import.meta.env.VITE_KLAVIYO_LIST_ID
+const subscribedEmailsStorageKey = 'square-up-saga.notifyMe.subscribedEmails'
+
+function getStoredEmails() {
+  if (typeof window === 'undefined') {
+    return []
+  }
+
+  try {
+    const rawValue = window.localStorage.getItem(subscribedEmailsStorageKey)
+
+    if (!rawValue) {
+      return []
+    }
+
+    const parsedValue = JSON.parse(rawValue)
+    return Array.isArray(parsedValue) ? parsedValue : []
+  } catch {
+    return []
+  }
+}
+
+function storeEmail(email: string) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const storedEmails = getStoredEmails()
+
+  if (storedEmails.includes(email)) {
+    return
+  }
+
+  window.localStorage.setItem(
+    subscribedEmailsStorageKey,
+    JSON.stringify([...storedEmails, email]),
+  )
+}
 
 function FighterSelectSection() {
   const [activeIndex, setActiveIndex] = useState(
@@ -155,6 +194,10 @@ function FighterSelectSection() {
   const activeFighter = fighters[activeIndex]
   const [pointerStartX, setPointerStartX] = useState<number | null>(null)
   const [pointerDragging, setPointerDragging] = useState(false)
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formMessage, setFormMessage] = useState('')
+  const [messageTone, setMessageTone] = useState<'error' | 'success' | 'info'>('info')
 
   const handlePrevious = () => {
     setActiveIndex((currentIndex) =>
@@ -206,9 +249,147 @@ function FighterSelectSection() {
     setPointerDragging(false)
   }
 
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const normalizedEmail = email.trim().toLowerCase()
+
+    if (!normalizedEmail) {
+      setMessageTone('error')
+      setFormMessage('Enter your email first.')
+      return
+    }
+
+    if (getStoredEmails().includes(normalizedEmail)) {
+      setMessageTone('info')
+      setFormMessage('You have already subscribed with this email.')
+      return
+    }
+
+    if (!klaviyoSiteId || !klaviyoListId) {
+      setMessageTone('error')
+      setFormMessage('We could not save your signup right now. Please try again.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setFormMessage('')
+
+    try {
+      const response = await fetch(
+        `https://a.klaviyo.com/client/subscriptions/?company_id=${encodeURIComponent(klaviyoSiteId)}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            revision: '2026-07-15',
+          },
+          body: JSON.stringify({
+            data: {
+              type: 'subscription',
+              attributes: {
+                profile: {
+                  data: {
+                    type: 'profile',
+                    attributes: {
+                      email: normalizedEmail,
+                    },
+                  },
+                },
+                custom_source: 'Hustle Landing Page',
+              },
+              relationships: {
+                list: {
+                  data: {
+                    type: 'list',
+                    id: klaviyoListId,
+                  },
+                },
+              },
+            },
+          }),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error('Subscription failed')
+      }
+
+      storeEmail(normalizedEmail)
+      setEmail('')
+      setMessageTone('success')
+      setFormMessage('You are in.')
+    } catch {
+      setMessageTone('error')
+      setFormMessage('We could not save your signup right now. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section className="fighter-select-section" aria-labelledby="fighter-select-title">
       <div className="fighter-select-section__inner">
+        <div className="fighter-select-section__signup-card">
+          <div className="fighter-select-section__signup-content">
+            <h2 className="fighter-select-section__signup-title">Be The First To Fight!</h2>
+
+            <form className="fighter-select-section__signup-form" onSubmit={handleSubmit}>
+              <label className="fighter-select-section__signup-field">
+                <span className="fighter-select-section__sr-only">Email address</span>
+                <span className="fighter-select-section__signup-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 7H20V17H4V7Z"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M4 8L12 13L20 8"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <input
+                  id="pre-register-email"
+                  className="fighter-select-section__signup-input"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter your email"
+                  autoComplete="email"
+                  disabled={isSubmitting}
+                />
+              </label>
+              <button
+                className="fighter-select-section__signup-button"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Notify Me'}
+              </button>
+            </form>
+
+            {formMessage ? (
+              <p
+                className={`fighter-select-section__signup-message fighter-select-section__signup-message--${messageTone}`}
+                role="status"
+                aria-live="polite"
+              >
+                {formMessage}
+              </p>
+            ) : null}
+          </div>
+        </div>
+
         <button
           className="fighter-select-section__nav fighter-select-section__nav--left"
           type="button"
