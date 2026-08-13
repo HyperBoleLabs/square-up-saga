@@ -330,153 +330,157 @@ function FighterSelectSection() {
   return (
     <section className="fighter-select-section" aria-labelledby="fighter-select-title">
       <div className="fighter-select-section__inner">
-        <div className="fighter-select-section__signup-card">
-          <div className="fighter-select-section__signup-content">
-            <h2 className="fighter-select-section__signup-title">Be The First To Fight!</h2>
+        <div className="fighter-select-section__content">
+          <div className="fighter-select-section__signup-card">
+            <div className="fighter-select-section__signup-content">
+              <h2 className="fighter-select-section__signup-title">Be The First To Fight!</h2>
 
-            <form className="fighter-select-section__signup-form" onSubmit={handleSubmit}>
-              <label className="fighter-select-section__signup-field">
-                <span className="fighter-select-section__sr-only">Email address</span>
-                <span className="fighter-select-section__signup-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 7H20V17H4V7Z"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4 8L12 13L20 8"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <input
-                  id="pre-register-email"
-                  className="fighter-select-section__signup-input"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Enter your email"
-                  autoComplete="email"
+              <form className="fighter-select-section__signup-form" onSubmit={handleSubmit}>
+                <label className="fighter-select-section__signup-field">
+                  <span className="fighter-select-section__sr-only">Email address</span>
+                  <span className="fighter-select-section__signup-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 7H20V17H4V7Z"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M4 8L12 13L20 8"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <input
+                    id="pre-register-email"
+                    className="fighter-select-section__signup-input"
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="Enter your email"
+                    autoComplete="email"
+                    disabled={isSubmitting}
+                  />
+                </label>
+                <button
+                  className="fighter-select-section__signup-button"
+                  type="submit"
                   disabled={isSubmitting}
-                />
-              </label>
-              <button
-                className="fighter-select-section__signup-button"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Notify Me'}
-              </button>
-            </form>
+                >
+                  {isSubmitting ? 'Submitting...' : 'Notify Me'}
+                </button>
+              </form>
 
-            {formMessage ? (
-              <p
-                className={`fighter-select-section__signup-message fighter-select-section__signup-message--${messageTone}`}
-                role="status"
-                aria-live="polite"
-              >
-                {formMessage}
-              </p>
-            ) : null}
-          </div>
-        </div>
-
-        <button
-          className="fighter-select-section__nav fighter-select-section__nav--left"
-          type="button"
-          onClick={handlePrevious}
-          aria-label="Show previous fighter"
-        >
-          <span aria-hidden="true">‹</span>
-        </button>
-
-        <div className="fighter-select-section__copy">
-          <p className="fighter-select-section__eyebrow">Choose</p>
-          <h2 className="fighter-select-section__title" id="fighter-select-title">
-            Your Fighter
-          </h2>
-
-          <div className="fighter-select-section__card">
-            <h3 className="fighter-select-section__name">{activeFighter.name}</h3>
-            <span className="fighter-select-section__tag">{activeFighter.tag}</span>
-            <p className="fighter-select-section__description">
-              {activeFighter.description}
-            </p>
-
-            <div className="fighter-select-section__stats" aria-label={`${activeFighter.name} stats`}>
-              {activeFighter.stats.map((stat) => (
-                <div className="fighter-select-section__stat" key={stat.label}>
-                  <span className="fighter-select-section__stat-label">{stat.label}</span>
-                  <div className="fighter-select-section__stat-bar">
-                    <span
-                      className="fighter-select-section__stat-fill"
-                      style={{ width: `${stat.value}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+              {formMessage ? (
+                <p
+                  className={`fighter-select-section__signup-message fighter-select-section__signup-message--${messageTone}`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {formMessage}
+                </p>
+              ) : null}
             </div>
           </div>
-        </div>
 
-        <div className="fighter-select-section__visual">
-          <button
-            className="fighter-select-section__nav fighter-select-section__nav--mobile fighter-select-section__nav--left"
-            type="button"
-            onClick={handlePrevious}
-            aria-label="Show previous fighter"
-          >
-            <span aria-hidden="true">‹</span>
-          </button>
+          <div className="fighter-select-section__selector">
+            <button
+              className="fighter-select-section__nav fighter-select-section__nav--left"
+              type="button"
+              onClick={handlePrevious}
+              aria-label="Show previous fighter"
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
 
-          <div
-            className="fighter-select-section__stage-wrap"
-            onPointerDown={handlePointerDown}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerCancel}
-            onLostPointerCapture={handlePointerCancel}
-          >
-            <div className="fighter-select-section__glow" aria-hidden="true" />
-            <img
-              className="fighter-select-section__fighter"
-              src={activeFighter.gifSrc}
-              alt={activeFighter.name}
-            />
-            <img
-              className="fighter-select-section__stage"
-              src={stageSrc}
-              alt=""
-              aria-hidden="true"
-            />
+            <div className="fighter-select-section__copy">
+              <p className="fighter-select-section__eyebrow">Choose</p>
+              <h2 className="fighter-select-section__title" id="fighter-select-title">
+                Your Fighter
+              </h2>
+
+              <div className="fighter-select-section__card">
+                <h3 className="fighter-select-section__name">{activeFighter.name}</h3>
+                <span className="fighter-select-section__tag">{activeFighter.tag}</span>
+                <p className="fighter-select-section__description">
+                  {activeFighter.description}
+                </p>
+
+                <div className="fighter-select-section__stats" aria-label={`${activeFighter.name} stats`}>
+                  {activeFighter.stats.map((stat) => (
+                    <div className="fighter-select-section__stat" key={stat.label}>
+                      <span className="fighter-select-section__stat-label">{stat.label}</span>
+                      <div className="fighter-select-section__stat-bar">
+                        <span
+                          className="fighter-select-section__stat-fill"
+                          style={{ width: `${stat.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="fighter-select-section__visual">
+              <button
+                className="fighter-select-section__nav fighter-select-section__nav--mobile fighter-select-section__nav--left"
+                type="button"
+                onClick={handlePrevious}
+                aria-label="Show previous fighter"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div
+                className="fighter-select-section__stage-wrap"
+                onPointerDown={handlePointerDown}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerCancel}
+                onLostPointerCapture={handlePointerCancel}
+              >
+                <div className="fighter-select-section__glow" aria-hidden="true" />
+                <img
+                  className="fighter-select-section__fighter"
+                  src={activeFighter.gifSrc}
+                  alt={activeFighter.name}
+                />
+                <img
+                  className="fighter-select-section__stage"
+                  src={stageSrc}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+
+              <button
+                className="fighter-select-section__nav fighter-select-section__nav--mobile fighter-select-section__nav--right"
+                type="button"
+                onClick={handleNext}
+                aria-label="Show next fighter"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+
+            <button
+              className="fighter-select-section__nav fighter-select-section__nav--right"
+              type="button"
+              onClick={handleNext}
+              aria-label="Show next fighter"
+            >
+              <span aria-hidden="true">›</span>
+            </button>
           </div>
-
-          <button
-            className="fighter-select-section__nav fighter-select-section__nav--mobile fighter-select-section__nav--right"
-            type="button"
-            onClick={handleNext}
-            aria-label="Show next fighter"
-          >
-            <span aria-hidden="true">›</span>
-          </button>
         </div>
-
-        <button
-          className="fighter-select-section__nav fighter-select-section__nav--right"
-          type="button"
-          onClick={handleNext}
-          aria-label="Show next fighter"
-        >
-          <span aria-hidden="true">›</span>
-        </button>
       </div>
     </section>
   )

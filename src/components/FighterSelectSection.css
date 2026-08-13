@@ -27,14 +27,23 @@
   width: min(100%, var(--section-max-width));
   margin: 0 auto;
   padding: 1.75rem var(--section-gutter) 0.75rem;
+}
+
+.fighter-select-section__content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fighter-select-section__selector {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(18rem, 25rem) minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: center;
+  padding-inline: 4rem;
 }
 
 .fighter-select-section__signup-card {
-  grid-column: 1 / -1;
   margin-bottom: 2.25rem;
   min-height: 15rem;
   border-radius: 1.4rem;
@@ -173,6 +182,7 @@
 
 .fighter-select-section__copy {
   align-self: stretch;
+  padding-top: 0.4rem;
 }
 
 .fighter-select-section__eyebrow,
@@ -355,11 +365,11 @@
 }
 
 .fighter-select-section__nav--left {
-  left: -1.5rem;
+  left: 0;
 }
 
 .fighter-select-section__nav--right {
-  right: -1.5rem;
+  right: 0;
 }
 
 .fighter-select-section__nav:focus-visible {
@@ -373,9 +383,13 @@
 
 @media (max-width: 960px) {
   .fighter-select-section__inner {
+    padding-inline: var(--section-gutter);
+  }
+
+  .fighter-select-section__selector {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding-inline: var(--section-gutter);
+    padding-inline: 0;
   }
 
   .fighter-select-section__signup-content {
@@ -394,6 +408,7 @@
 
   .fighter-select-section__copy {
     max-width: 34rem;
+    padding: 0;
   }
 
   .fighter-select-section__description {
@@ -401,16 +416,17 @@
   }
 
   .fighter-select-section__visual {
+    margin-top: 1.5rem;
     min-height: 30rem;
     position: relative;
+    padding: 0 3rem;
   }
 
   .fighter-select-section__stage-wrap {
     min-height: 30rem;
   }
 
-  .fighter-select-section > .fighter-select-section__nav,
-  .fighter-select-section__inner > .fighter-select-section__nav {
+  .fighter-select-section__selector > .fighter-select-section__nav {
     display: none;
   }
 
@@ -421,11 +437,11 @@
   }
 
   .fighter-select-section__visual > .fighter-select-section__nav--left {
-    left: 0;
+    left: 0.35rem;
   }
 
   .fighter-select-section__visual > .fighter-select-section__nav--right {
-    right: 0;
+    right: 0.35rem;
   }
 }
 
@@ -440,7 +456,10 @@
 
   .fighter-select-section__inner {
     padding: 1rem var(--section-gutter) 0.35rem;
-    gap: 1.4rem;
+  }
+
+  .fighter-select-section__content {
+    width: 100%;
   }
 
   .fighter-select-section__signup-card {
@@ -489,6 +508,11 @@
     min-height: 24rem;
   }
 
+  .fighter-select-section__visual {
+    margin-top: 1.9rem;
+    padding: 0 2.2rem;
+  }
+
   .fighter-select-section__fighter {
     width: min(100%, 20rem);
     max-height: 22rem;
@@ -505,10 +529,10 @@
   }
 
   .fighter-select-section__visual > .fighter-select-section__nav--left {
-    left: -0.6rem;
+    left: 0;
   }
 
   .fighter-select-section__visual > .fighter-select-section__nav--right {
-    right: -0.6rem;
+    right: 0;
   }
 }
