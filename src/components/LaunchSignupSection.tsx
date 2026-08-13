@@ -133,9 +133,6 @@ function LaunchSignupSection() {
           <div className="launch-signup-section__content">
             <div className="launch-signup-section__header">
               <h2 className="launch-signup-section__title">Be The First To Fight!</h2>
-              <p className="launch-signup-section__copy">
-                Pre-register now and get exclusive rewards at launch.
-              </p>
             </div>
 
             <form className="launch-signup-section__form" onSubmit={handleSubmit}>

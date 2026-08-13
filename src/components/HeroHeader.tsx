@@ -18,7 +18,7 @@ function HeroHeader({ onPreRegisterClick }: HeroHeaderProps) {
         type="button"
         onClick={onPreRegisterClick}
       >
-        Pre-register
+        Notify Me
       </button>
     </header>
   )
