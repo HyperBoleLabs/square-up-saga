@@ -13,6 +13,14 @@ The React Compiler is enabled on this template. See [this documentation](https:/
 
 Note: This will impact Vite dev & build performances.
 
+## Deployment
+
+This repo is set up to deploy to GitHub Pages automatically on every push to `main` through [`.github/workflows/deploy.yaml`](./.github/workflows/deploy.yaml).
+
+To make the site go live, the repository's GitHub Pages source still needs to be set to `GitHub Actions` in:
+
+`Settings -> Pages -> Build and deployment -> Source`
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
