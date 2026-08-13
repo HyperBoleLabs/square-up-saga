@@ -9,6 +9,7 @@
 .hero-section__background,
 .hero-section__sky,
 .hero-section__clouds,
+.hero-section__fighters,
 .hero-section__foreground,
 .hero-section__overlay {
   position: absolute;
@@ -45,17 +46,64 @@
 
 .hero-section__foreground {
   background: var(--hero-foreground-image) right bottom / cover no-repeat;
+  z-index: 2;
+}
+
+.hero-section__fighters {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-section__fighter {
+  position: absolute;
+  bottom: 7%;
+}
+
+.hero-section__fighter-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  opacity: 0.98;
+}
+
+.hero-section__fighter--bruce {
+  left: 58%;
+  width: min(32vw, 24rem);
+  height: min(48vw, 35rem);
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 1;
+}
+
+.hero-section__fighter--mike {
+  left: 68%;
+  right: auto;
+  width: min(32vw, 24rem);
+  height: min(48vw, 35rem);
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 1;
+}
+
+.hero-section__fighter--violet {
+  right: 17%;
+  width: min(32vw, 24rem);
+  height: min(48vw, 35rem);
+  z-index: 3;
+  opacity: 1;
 }
 
 .hero-section__overlay {
   background:
     linear-gradient(90deg, rgba(2, 4, 10, 0.76) 0%, rgba(2, 4, 10, 0.6) 28%, rgba(2, 4, 10, 0.02) 62%, rgba(2, 4, 10, 0) 100%);
   pointer-events: none;
+  z-index: 4;
 }
 
 .hero-section__shell {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   width: min(100%, var(--section-max-width));
   min-height: calc(100vh - 3rem);
   margin: 0 auto;
@@ -309,6 +357,33 @@
 }
 
 @media (max-width: 900px) {
+  .hero-section__fighter--bruce {
+    left: 57%;
+    bottom: 5%;
+    width: min(30vw, 16.4rem);
+    height: min(44vw, 23.6rem);
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+
+  .hero-section__fighter--mike {
+    left: 68%;
+    right: auto;
+    bottom: 2%;
+    width: min(30vw, 16.4rem);
+    height: min(44vw, 23.6rem);
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+
+  .hero-section__fighter--violet {
+    right: 14%;
+    bottom: 3%;
+    width: min(30vw, 16.4rem);
+    height: min(44vw, 23.6rem);
+    opacity: 1;
+  }
+
   .hero-section__topbar {
     grid-template-columns: auto 1fr auto;
   }
@@ -335,6 +410,41 @@
   .hero-section__foreground {
     background-position: 70% bottom;
     background-size: auto 100%;
+  }
+
+  .hero-section__fighters {
+    inset: 0 0 auto;
+    height: 19rem;
+  }
+
+  .hero-section__fighter {
+    bottom: auto;
+  }
+
+  .hero-section__fighter--bruce {
+    left: 57%;
+    top: 8.8rem;
+    width: 12.6rem;
+    height: 19rem;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+
+  .hero-section__fighter--mike {
+    left: 68%;
+    top: 8.1rem;
+    width: 12.6rem;
+    height: 19rem;
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+
+  .hero-section__fighter--violet {
+    right: 13%;
+    top: 5rem;
+    width: 12.6rem;
+    height: 19rem;
+    opacity: 1;
   }
 
   .hero-section__overlay {
@@ -365,7 +475,7 @@
 
   .hero-section__content {
     width: 100%;
-    margin-top: 18.5rem;
+    margin-top: 19.2rem;
     text-align: center;
   }
 

@@ -1,8 +1,29 @@
 import { useEffect, useState } from 'react'
 import HeroHeader from './HeroHeader'
 import './HeroSection.css'
+import { assetUrl } from '../utils/assetUrl'
 
 const launchDate = new Date('2026-09-14T00:00:00')
+const heroFighters = [
+  {
+    name: 'Bruce',
+    src: assetUrl('bruce.html'),
+    modifier: 'bruce',
+    title: 'Bruce animation',
+  },
+  {
+    name: 'Mike',
+    src: assetUrl('mike.html'),
+    modifier: 'mike',
+    title: 'Mike animation',
+  },
+  {
+    name: 'Violet',
+    src: assetUrl('violet.html'),
+    modifier: 'violet',
+    title: 'Violet animation',
+  },
+] as const
 
 function getTimeRemaining(targetDate: Date) {
   const now = new Date()
@@ -75,6 +96,22 @@ function HeroSection() {
             <span className="hero-section__cloud-panel" />
             <span className="hero-section__cloud-panel" />
           </div>
+        </div>
+        <div className="hero-section__fighters" aria-hidden="true">
+          {heroFighters.map((fighter) => (
+            <div
+              className={`hero-section__fighter hero-section__fighter--${fighter.modifier}`}
+              key={fighter.name}
+            >
+              <iframe
+                className="hero-section__fighter-frame"
+                src={fighter.src}
+                title={fighter.title}
+                loading="lazy"
+                tabIndex={-1}
+              />
+            </div>
+          ))}
         </div>
         <div className="hero-section__foreground" />
         <div className="hero-section__overlay" />
