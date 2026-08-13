@@ -1,0 +1,223 @@
+.gameplay-section {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 1.5rem 2.5rem;
+  background:
+    radial-gradient(circle at top center, rgba(39, 114, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #04070f 0%, #071123 55%, #0a1530 100%);
+}
+
+.gameplay-section::before,
+.gameplay-section::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.gameplay-section::before {
+  inset: 4rem auto auto 8%;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 999px;
+  background: rgba(255, 174, 22, 0.16);
+  filter: blur(72px);
+}
+
+.gameplay-section::after {
+  right: -3rem;
+  bottom: 3rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: rgba(96, 61, 255, 0.18);
+  filter: blur(84px);
+}
+
+.gameplay-section__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--section-max-width));
+  margin: 0 auto;
+  padding: 0 var(--section-gutter);
+}
+
+.gameplay-section__intro {
+  width: min(100%, 48rem);
+  margin: 0 auto 1.2rem;
+  text-align: center;
+}
+
+.gameplay-section__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.gameplay-section__heading-line {
+  width: clamp(2.4rem, 7vw, 4.6rem);
+  height: 0.24rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, #ffbe1d 35%, #ffd969 100%);
+}
+
+.gameplay-section__heading-line:last-child {
+  transform: scaleX(-1);
+}
+
+.gameplay-section__eyebrow,
+.gameplay-section__title,
+.gameplay-section__shot-copy h3 {
+  margin: 0;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  text-transform: uppercase;
+}
+
+.gameplay-section__eyebrow {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+  color: #f7f2e8;
+}
+
+.gameplay-section__title {
+  margin-top: 1.5rem;
+  font-size: clamp(2rem, 3.7vw, 3.3rem);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  color: #ffc428;
+  white-space: nowrap;
+  text-shadow:
+    0 3px 0 rgba(54, 24, 5, 0.75),
+    0 14px 32px rgba(0, 0, 0, 0.34);
+}
+
+.gameplay-section__accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gameplay-section__layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.gameplay-section__shot {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid rgba(110, 141, 218, 0.28);
+  border-radius: 1.6rem;
+  background:
+    linear-gradient(180deg, rgba(17, 28, 54, 0.92), rgba(8, 15, 30, 0.96)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.gameplay-section__shot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%);
+  pointer-events: none;
+}
+
+.gameplay-section__shot-frame {
+  position: relative;
+  margin: 0.85rem 0.85rem 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #071122;
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.gameplay-section__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.gameplay-section__shot-copy {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1rem 1.05rem;
+}
+
+.gameplay-section__accent {
+  padding: 0.38rem 0.68rem;
+  background: linear-gradient(180deg, #6b39ff, #3f1bb3);
+  box-shadow: 0 10px 22px rgba(82, 51, 218, 0.28);
+  font-size: 0.68rem;
+  color: #fbf7ff;
+}
+
+.gameplay-section__shot-copy h3 {
+  margin-top: 0.7rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  color: #fff6dc;
+}
+
+.gameplay-section__shot-copy p {
+  margin: 0.45rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(232, 238, 249, 0.84);
+}
+
+@media (max-width: 960px) {
+  .gameplay-section__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .gameplay-section {
+    padding: 1rem 0.9rem 1.6rem;
+  }
+
+  .gameplay-section__inner {
+    padding: 0;
+  }
+
+  .gameplay-section__intro {
+    margin-bottom: 1.2rem;
+  }
+
+  .gameplay-section__title {
+    white-space: normal;
+  }
+
+  .gameplay-section__shot {
+    border-radius: 1.15rem;
+  }
+
+  .gameplay-section__shot-frame {
+    margin: 0.65rem 0.65rem 0;
+    border-radius: 0.8rem;
+  }
+
+  .gameplay-section__shot-copy {
+    padding: 0.85rem 0.8rem 0.9rem;
+  }
+
+  .gameplay-section__shot-copy p {
+    font-size: 0.88rem;
+  }
+}
