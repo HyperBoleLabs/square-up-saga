@@ -8,10 +8,10 @@ function Home() {
   return (
     <main className="page-shell">
       <HeroSection />
+      <LaunchSignupSection />
       <FighterSelectSection />
       <GameplaySection />
       <FeaturesSection />
-      <LaunchSignupSection />
     </main>
   )
 }

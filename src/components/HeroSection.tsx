@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import HeroHeader from './HeroHeader'
 import './HeroSection.css'
 
-const launchDate = new Date('2026-08-11T00:00:00')
+const launchDate = new Date('2026-09-14T00:00:00')
 
 function getTimeRemaining(targetDate: Date) {
   const now = new Date()
@@ -83,7 +83,7 @@ function HeroSection() {
             the arena in Square Up Saga.
           </p>
 
-          <p className="hero-section__launch-note">Launching August 11</p>
+          <p className="hero-section__launch-note">Launching September 14</p>
 
           <div className="hero-section__countdown" aria-label="Launch countdown">
             {countdownItems.map((item) => (

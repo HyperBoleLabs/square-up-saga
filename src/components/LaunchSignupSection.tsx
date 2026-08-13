@@ -174,7 +174,7 @@ function LaunchSignupSection() {
                 />
               </label>
               <button className="launch-signup-section__notify" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Pre-Register Now'}
+                {isSubmitting ? 'Submitting...' : 'Notify Me'}
               </button>
             </form>
 

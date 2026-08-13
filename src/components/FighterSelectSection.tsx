@@ -145,7 +145,7 @@ const fighters: Fighter[] = [
 ]
 
 const stageSrc = assetUrl('stage.png')
-const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Cage')
+const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
 const swipeThreshold = 45
 
 function FighterSelectSection() {
