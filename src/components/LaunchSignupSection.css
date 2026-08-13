@@ -1,65 +1,30 @@
 .launch-signup-section {
-  padding: 1.25rem 0 2rem 1.5rem;
-  background: #050507;
+  padding: 0;
+  background: transparent;
 }
 
 .launch-signup-section__inner {
-  width: min(100%, var(--section-max-width));
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-  padding-inline: var(--section-gutter);
-}
-
-.launch-signup-section__badge {
-  position: relative;
-  z-index: 2;
-  width: fit-content;
-  margin: 0 auto -1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.launch-signup-section__badge-line {
-  width: 3.25rem;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(240, 187, 62, 0.9), transparent);
-}
-
-.launch-signup-section__badge-icon {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 999px;
-  background: transparent;
-  box-shadow: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.launch-signup-section__badge-icon img {
-  width: 4.85rem;
-  height: 4.85rem;
-  display: block;
+  padding-inline: 0;
 }
 
 .launch-signup-section__card {
-  padding: 3rem 1.7rem 1.9rem;
-  border: 1px solid rgba(128, 121, 255, 0.5);
-  border-radius: 1.6rem;
+  min-height: 16rem;
+  padding: 2.2rem clamp(1.25rem, 4vw, 4.5rem);
+  border: 0;
+  border-radius: 0;
   background:
-    linear-gradient(180deg, rgba(11, 8, 34, 0.72), rgba(17, 11, 37, 0.92)),
-    var(--launch-signup-background-image)
-      center/115% auto no-repeat;
-  box-shadow:
-    0 0 28px rgba(109, 119, 255, 0.24),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    linear-gradient(90deg, rgba(237, 243, 252, 0.9) 0%, rgba(233, 240, 251, 0.78) 24%, rgba(233, 240, 251, 0.32) 48%, rgba(233, 240, 251, 0.08) 72%, rgba(233, 240, 251, 0) 100%),
+    var(--launch-signup-background-image) center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .launch-signup-section__header {
-  width: min(100%, 56rem);
-  margin: 0 auto;
-  text-align: center;
+  width: min(100%, 29rem);
+  text-align: left;
 }
 
 .launch-signup-section__title,
@@ -69,25 +34,26 @@
 
 .launch-signup-section__title {
   font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 0.95;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #f5f2ea;
+  color: #12327a;
 }
 
 .launch-signup-section__copy {
-  margin-top: 0.45rem;
+  margin-top: 0.25rem;
   font-size: 1rem;
-  line-height: 1.5;
-  color: rgba(245, 245, 245, 0.9);
+  line-height: 1.35;
+  color: #17233b;
 }
 
 .launch-signup-section__form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  margin-top: 1.35rem;
+  grid-template-columns: minmax(15rem, 18rem) auto;
+  gap: 0.8rem;
+  width: fit-content;
+  margin-top: 1rem;
   align-items: center;
 }
 
@@ -98,12 +64,12 @@
 
 .launch-signup-section__field-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
-  color: rgba(245, 245, 245, 0.82);
+  width: 1.2rem;
+  height: 1.2rem;
+  color: rgba(23, 35, 59, 0.48);
   pointer-events: none;
 }
 
@@ -114,38 +80,40 @@
 
 .launch-signup-section__input,
 .launch-signup-section__notify {
-  border-radius: 0.85rem;
+  border-radius: 0.35rem;
 }
 
 .launch-signup-section__input {
   width: 100%;
-  height: 4.5rem;
-  padding: 0 1.1rem 0 3.15rem;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  background: rgba(6, 8, 18, 0.82);
-  font-size: 1rem;
-  color: #f5f5f5;
+  height: 3.45rem;
+  padding: 0 0.95rem 0 2.55rem;
+  border: 1px solid rgba(164, 180, 206, 0.95);
+  background: rgba(255, 255, 255, 0.96);
+  font-size: 0.95rem;
+  color: #17233b;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .launch-signup-section__input::placeholder {
-  color: rgba(245, 245, 245, 0.55);
+  color: rgba(23, 35, 59, 0.48);
 }
 
 .launch-signup-section__notify {
-  min-width: 21rem;
-  height: 4.5rem;
-  padding: 0 1.8rem;
-  border: 1px solid rgba(255, 214, 86, 0.78);
+  min-width: 0;
+  height: 3.45rem;
+  padding: 0 1.4rem;
+  border: 1px solid rgba(219, 161, 11, 0.95);
   background: linear-gradient(180deg, #ffd44d, #eca719);
   box-shadow:
-    0 0 16px rgba(255, 194, 52, 0.24),
-    inset 0 0 10px rgba(255, 255, 255, 0.22);
+    0 8px 18px rgba(255, 194, 52, 0.18),
+    inset 0 0 10px rgba(255, 255, 255, 0.18);
   font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: 2rem;
-  letter-spacing: 0.04em;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #3e2208;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .launch-signup-section__notify:disabled,
@@ -155,11 +123,11 @@
 }
 
 .launch-signup-section__message {
-  margin: 0.8rem auto 0;
-  width: min(100%, 56rem);
+  margin: 0.7rem 0 0;
+  width: min(100%, 29rem);
   font-size: 0.95rem;
   line-height: 1.45;
-  text-align: center;
+  text-align: left;
 }
 
 .launch-signup-section__message--success {
@@ -199,65 +167,48 @@
 @media (max-width: 900px) {
   .launch-signup-section__form {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .launch-signup-section__notify {
-    min-width: 0;
     width: 100%;
   }
 }
 
 @media (max-width: 720px) {
   .launch-signup-section {
-    padding: 1rem 0 1.25rem 0.9rem;
+    padding: 0;
   }
 
   .launch-signup-section__inner {
     padding-inline: 0;
   }
 
-  .launch-signup-section__badge {
-    margin-bottom: -0.75rem;
-  }
-
-  .launch-signup-section__badge-line {
-    width: 2.2rem;
-  }
-
-  .launch-signup-section__badge-icon {
-    width: 4.7rem;
-    height: 4.7rem;
-  }
-
-  .launch-signup-section__badge-icon img {
-    width: 3.8rem;
-    height: 3.8rem;
-  }
-
   .launch-signup-section__card {
-    padding: 2.35rem 1rem 1rem;
-    border-radius: 1.2rem;
+    min-height: 13rem;
+    padding: 1.35rem 1rem 1.15rem;
   }
 
   .launch-signup-section__title {
-    font-size: 2.35rem;
+    font-size: 1.85rem;
   }
 
   .launch-signup-section__copy {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .launch-signup-section__form {
     gap: 0.8rem;
     margin-top: 1rem;
+    width: 100%;
   }
 
   .launch-signup-section__input,
   .launch-signup-section__notify {
-    height: 3.7rem;
+    height: 3.2rem;
   }
 
   .launch-signup-section__notify {
-    font-size: 1.6rem;
+    font-size: 1.32rem;
   }
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import './LaunchSignupSection.css'
-import { assetUrl } from '../utils/assetUrl'
 
 const klaviyoSiteId = import.meta.env.VITE_KLAVIYO_SITE_ID
 const klaviyoListId = import.meta.env.VITE_KLAVIYO_LIST_ID
@@ -130,19 +129,11 @@ function LaunchSignupSection() {
   return (
     <section className="launch-signup-section" id="launch-signup">
       <div className="launch-signup-section__inner">
-        <div className="launch-signup-section__badge">
-          <span className="launch-signup-section__badge-line"></span>
-          <span className="launch-signup-section__badge-icon">
-            <img src={assetUrl('paul-icon.png')} alt="" />
-          </span>
-          <span className="launch-signup-section__badge-line"></span>
-        </div>
-
         <div className="launch-signup-section__card">
           <div className="launch-signup-section__header">
-            <h2 className="launch-signup-section__title">Join the Hustle</h2>
+            <h2 className="launch-signup-section__title">Be The First To Fight!</h2>
             <p className="launch-signup-section__copy">
-              Be the first to know. Get exclusive updates and rewards.
+              Pre-register now and get exclusive rewards at launch.
             </p>
           </div>
 
@@ -182,7 +173,7 @@ function LaunchSignupSection() {
               />
             </label>
             <button className="launch-signup-section__notify" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting...' : 'Notify Me'}
+              {isSubmitting ? 'Submitting...' : 'Pre-Register Now'}
             </button>
           </form>
 

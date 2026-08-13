@@ -12,7 +12,7 @@ document.documentElement.style.setProperty(
 )
 document.documentElement.style.setProperty(
   '--launch-signup-background-image',
-  `url("${assetUrl('signup-background.png')}")`,
+  `url("${assetUrl('join-bg.png')}")`,
 )
 
 createRoot(document.getElementById('root')!).render(
