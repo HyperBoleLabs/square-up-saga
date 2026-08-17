@@ -122,21 +122,21 @@ function HeroSection({ showMike }: HeroSectionProps) {
     setCloudsReady(false)
 
     const revealLayers = async () => {
-      await loadImage(heroSkySrc, 'high')
-
-      if (isCancelled) {
-        return
-      }
-
-      setSkyReady(true)
-
-      await loadImage(foregroundSrc, 'auto')
+      await loadImage(foregroundSrc, 'high')
 
       if (isCancelled) {
         return
       }
 
       setForegroundReady(true)
+
+      await loadImage(heroSkySrc, 'auto')
+
+      if (isCancelled) {
+        return
+      }
+
+      setSkyReady(true)
 
       await loadImage(heroCloudSrc, 'low')
 
