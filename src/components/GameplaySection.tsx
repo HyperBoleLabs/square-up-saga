@@ -5,8 +5,8 @@ type GameplaySectionProps = {
   showMike: boolean
 }
 
-const defaultPowerUnleashedImage = assetUrl('ss-5.png')
-const noMikePowerUnleashedImage = assetUrl('no-mike-power-unleashed.png')
+const defaultPowerUnleashedImage = assetUrl('ss-5.jpg')
+const noMikePowerUnleashedImage = assetUrl('no-mike-power-unleashed.jpg')
 
 const gameplayShots = (showMike: boolean) => [
   {
@@ -18,19 +18,19 @@ const gameplayShots = (showMike: boolean) => [
   {
     title: 'Fight To Win',
     caption: 'Climb the leaderboard, push your rank, and turn every round into a statement.',
-    imageSrc: assetUrl('ss-1.png'),
+    imageSrc: assetUrl('ss-1.jpg'),
     accent: 'Ranked Rush',
   },
   {
     title: 'Infinite Powers',
     caption: 'Stack special abilities, freeze the board, and unleash chaos at the perfect time.',
-    imageSrc: assetUrl('ss-3.png'),
+    imageSrc: assetUrl('ss-3.jpg'),
     accent: 'Power Stack',
   },
   {
     title: 'Align Colors To Attack',
     caption: 'Build combos under pressure while the arena erupts around your fighters.',
-    imageSrc: assetUrl('ss-4.png'),
+    imageSrc: assetUrl('ss-4.jpg'),
     accent: 'Combo Pressure',
   },
 ]

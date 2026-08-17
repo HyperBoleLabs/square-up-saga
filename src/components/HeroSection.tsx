@@ -34,18 +34,18 @@ function HeroSection({ showMike }: HeroSectionProps) {
   const heroStyle = {
     '--hero-foreground-desktop-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-desktop.png'
-        : 'hero-foreground-no-mike-desktop.png',
+        ? 'hero-foreground-mike-desktop.jpg'
+        : 'hero-foreground-no-mike-desktop.jpg',
     )}")`,
     '--hero-foreground-tablet-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-tablet.png'
-        : 'hero-foreground-no-mike-tablet.png',
+        ? 'hero-foreground-mike-tablet.jpg'
+        : 'hero-foreground-no-mike-tablet.jpg',
     )}")`,
     '--hero-foreground-mobile-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-mobile.png'
-        : 'hero-foreground-no-mike-mobile.png',
+        ? 'hero-foreground-mike-mobile.jpg'
+        : 'hero-foreground-no-mike-mobile.jpg',
     )}")`,
   } as CSSProperties
 
