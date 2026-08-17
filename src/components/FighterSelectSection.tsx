@@ -499,7 +499,9 @@ function FighterSelectSection({ showMike }: FighterSelectSectionProps) {
                   className="fighter-select-section__fighter"
                   src={activeFighter.gifSrc}
                   alt={activeFighter.name}
+                  loading="lazy"
                   decoding="async"
+                  fetchPriority="low"
                 />
                 <img
                   className="fighter-select-section__stage"

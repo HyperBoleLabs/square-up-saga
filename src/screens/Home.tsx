@@ -14,7 +14,7 @@ function Home({ showMike }: HomeProps) {
   return (
     <main className="page-shell">
       <HeroSection showMike={showMike} />
-      <DeferredSection minHeight="72rem">
+      <DeferredSection minHeight="72rem" rootMargin="0px 0px">
         <Suspense fallback={<div className="deferred-section-placeholder" aria-hidden="true" />}>
           <FighterSelectSection showMike={showMike} />
         </Suspense>
