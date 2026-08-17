@@ -38,14 +38,14 @@ function HeroSection({ showMike }: HeroSectionProps) {
     viewportWidth <= 499
       ? assetUrl(
           showMike
-            ? 'hero-foreground-mike-mobile.png'
-            : 'hero-foreground-no-mike-mobile.png',
+            ? 'hero-foreground-mike-mobile.webp'
+            : 'hero-foreground-no-mike-mobile.webp',
         )
       : viewportWidth <= 720
         ? assetUrl(
             showMike
-              ? 'hero-foreground-mike-tablet.png'
-              : 'hero-foreground-no-mike-tablet.png',
+              ? 'hero-foreground-mike-tablet.webp'
+              : 'hero-foreground-no-mike-tablet.webp',
           )
         : assetUrl(
             showMike
@@ -62,13 +62,13 @@ function HeroSection({ showMike }: HeroSectionProps) {
     )}")`,
     '--hero-foreground-tablet-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-tablet.png'
-        : 'hero-foreground-no-mike-tablet.png',
+        ? 'hero-foreground-mike-tablet.webp'
+        : 'hero-foreground-no-mike-tablet.webp',
     )}")`,
     '--hero-foreground-mobile-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-mobile.png'
-        : 'hero-foreground-no-mike-mobile.png',
+        ? 'hero-foreground-mike-mobile.webp'
+        : 'hero-foreground-no-mike-mobile.webp',
     )}")`,
   } as CSSProperties
 
