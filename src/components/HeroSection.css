@@ -89,47 +89,14 @@
 }
 
 .hero-section__brand {
-  display: inline-grid;
-  gap: 0.05rem;
-  justify-items: start;
-  text-transform: uppercase;
-  line-height: 0.9;
-}
-
-.hero-section__brand-top {
   display: inline-flex;
-  align-items: flex-end;
-  gap: 0.22rem;
+  align-items: center;
 }
 
-.hero-section__brand-square,
-.hero-section__brand-up,
-.hero-section__brand-saga {
-  display: inline-block;
-  padding: 0.12rem 0.4rem;
-  border-radius: 0.35rem;
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  transform: skew(-10deg);
-}
-
-.hero-section__brand-square {
-  background: #ffffff;
-  color: #101010;
-}
-
-.hero-section__brand-up {
-  background: linear-gradient(180deg, #ffd543, #ffab00);
-  color: #111111;
-  font-size: 2.25rem;
-}
-
-.hero-section__brand-saga {
-  background: linear-gradient(180deg, #f44336, #aa140d);
-  color: #ffffff;
-  font-size: 1.6rem;
+.hero-section__brand-image {
+  display: block;
+  width: clamp(8.5rem, 16vw, 12rem);
+  height: auto;
 }
 
 .hero-section__cta {
