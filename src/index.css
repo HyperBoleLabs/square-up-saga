@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap');
-
 :root {
-  font-family: 'Manrope', sans-serif;
+  font-family:
+    'Manrope',
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: #24150d;
@@ -26,6 +30,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-family: inherit;
   cursor: var(--app-cursor), auto;
 }
 
