@@ -49,16 +49,16 @@ function HeroSection({ showMike }: HeroSectionProps) {
           )
         : assetUrl(
             showMike
-              ? 'hero-foreground-mike-desktop.png'
-              : 'hero-foreground-no-mike-desktop.png',
+              ? 'hero-foreground-mike-desktop.webp'
+              : 'hero-foreground-no-mike-desktop.webp',
           )
   const heroStyle = {
     '--hero-sky-image': `url("${assetUrl('hero-sky.jpg')}")`,
     '--hero-cloud-image': `url("${assetUrl('hero-cloud.png')}")`,
     '--hero-foreground-desktop-image': `url("${assetUrl(
       showMike
-        ? 'hero-foreground-mike-desktop.png'
-        : 'hero-foreground-no-mike-desktop.png',
+        ? 'hero-foreground-mike-desktop.webp'
+        : 'hero-foreground-no-mike-desktop.webp',
     )}")`,
     '--hero-foreground-tablet-image': `url("${assetUrl(
       showMike
