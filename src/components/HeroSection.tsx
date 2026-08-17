@@ -4,8 +4,6 @@ import './HeroSection.css'
 import { assetUrl } from '../utils/assetUrl'
 
 const launchDate = new Date('2026-09-14T00:00:00')
-const heroSkySrc = assetUrl('hero-sky.jpg')
-const heroCloudSrc = assetUrl('hero-cloud.png')
 
 function getTimeRemaining(targetDate: Date) {
   const now = new Date()
@@ -55,8 +53,8 @@ function HeroSection({ showMike }: HeroSectionProps) {
               : 'hero-foreground-no-mike-desktop.png',
           )
   const heroStyle = {
-    '--hero-sky-image': `url("${heroSkySrc}")`,
-    '--hero-cloud-image': `url("${heroCloudSrc}")`,
+    '--hero-sky-image': `url("${assetUrl('hero-sky.jpg')}")`,
+    '--hero-cloud-image': `url("${assetUrl('hero-cloud.png')}")`,
     '--hero-foreground-desktop-image': `url("${assetUrl(
       showMike
         ? 'hero-foreground-mike-desktop.png'
@@ -130,22 +128,6 @@ function HeroSection({ showMike }: HeroSectionProps) {
     <section className="hero-section" style={heroStyle}>
       <img
         src={foregroundSrc}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async"
-        style={{ display: 'none' }}
-      />
-      <img
-        src={heroSkySrc}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async"
-        style={{ display: 'none' }}
-      />
-      <img
-        src={heroCloudSrc}
         alt=""
         aria-hidden="true"
         loading="eager"
