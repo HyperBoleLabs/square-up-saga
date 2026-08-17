@@ -115,21 +115,19 @@ function HeroSection({ showMike }: HeroSectionProps) {
   }, [])
 
   useEffect(() => {
+    setForegroundReady(false)
+    setSkyReady(false)
+    setCloudsReady(false)
+  }, [foregroundSrc])
+
+  useEffect(() => {
     let isCancelled = false
 
-    setSkyReady(false)
-    setForegroundReady(false)
-    setCloudsReady(false)
+    if (!foregroundReady) {
+      return
+    }
 
     const revealLayers = async () => {
-      await loadImage(foregroundSrc, 'high')
-
-      if (isCancelled) {
-        return
-      }
-
-      setForegroundReady(true)
-
       await loadImage(heroSkySrc, 'auto')
 
       if (isCancelled) {
@@ -152,7 +150,7 @@ function HeroSection({ showMike }: HeroSectionProps) {
     return () => {
       isCancelled = true
     }
-  }, [foregroundSrc])
+  }, [foregroundReady])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,6 +179,17 @@ function HeroSection({ showMike }: HeroSectionProps) {
 
   return (
     <section className="hero-section" style={heroStyle}>
+      <img
+        src={foregroundSrc}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+        onLoad={() => setForegroundReady(true)}
+        onError={() => setForegroundReady(true)}
+        style={{ display: 'none' }}
+      />
       <div className="hero-section__background" aria-hidden="true">
         <div
           className={`hero-section__sky${skyReady ? ' hero-section__sky--visible' : ''}`}
