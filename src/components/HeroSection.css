@@ -23,15 +23,11 @@
 .hero-section__sky {
   background: var(--hero-sky-image) center top / cover no-repeat;
   z-index: 0;
-  opacity: 0;
-  transition: opacity 220ms ease-out;
 }
 
 .hero-section__clouds {
   overflow: hidden;
   z-index: 1;
-  opacity: 0;
-  transition: opacity 220ms ease-out;
 }
 
 .hero-section__cloud-track {
@@ -51,10 +47,8 @@
 }
 
 .hero-section__foreground {
-  background: var(--hero-foreground-active-image) center bottom / cover no-repeat;
+  background: var(--hero-foreground-desktop-image) center bottom / cover no-repeat;
   z-index: 2;
-  opacity: 0;
-  transition: opacity 220ms ease-out;
 }
 
 .hero-section__overlay {
@@ -62,12 +56,6 @@
     linear-gradient(90deg, rgba(2, 4, 10, 0.76) 0%, rgba(2, 4, 10, 0.6) 28%, rgba(2, 4, 10, 0.02) 62%, rgba(2, 4, 10, 0) 100%);
   pointer-events: none;
   z-index: 4;
-}
-
-.hero-section__sky--visible,
-.hero-section__clouds--visible,
-.hero-section__foreground--visible {
-  opacity: 1;
 }
 
 .hero-section__shell {
@@ -333,6 +321,7 @@
 
 @media (min-width: 500px) and (max-width: 720px) {
   .hero-section__foreground {
+    background-image: var(--hero-foreground-tablet-image);
     background-position: center bottom;
     background-size: cover;
   }
@@ -365,6 +354,7 @@
   }
 
   .hero-section__foreground {
+    background-image: var(--hero-foreground-mobile-image);
     background-position: center bottom;
     background-size: cover;
   }
