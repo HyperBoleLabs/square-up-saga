@@ -4,6 +4,32 @@ import './HeroSection.css'
 import { assetUrl } from '../utils/assetUrl'
 
 const launchDate = new Date('2026-09-14T00:00:00')
+const heroSkySrc = assetUrl('hero-sky.jpg')
+const heroCloudSrc = assetUrl('hero-cloud.png')
+
+function loadImage(src: string, fetchPriority: 'high' | 'low' | 'auto' = 'auto') {
+  return new Promise<void>((resolve) => {
+    const image = new Image()
+
+    image.decoding = 'async'
+
+    if ('fetchPriority' in image) {
+      image.fetchPriority = fetchPriority
+    }
+
+    const finish = () => {
+      resolve()
+    }
+
+    image.onload = finish
+    image.onerror = finish
+    image.src = src
+
+    if (image.complete) {
+      finish()
+    }
+  })
+}
 
 function getTimeRemaining(targetDate: Date) {
   const now = new Date()
@@ -31,22 +57,34 @@ function HeroSection({ showMike }: HeroSectionProps) {
     getTimeRemaining(launchDate),
   )
   const [showScrollButton, setShowScrollButton] = useState(true)
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === 'undefined' ? 1280 : window.innerWidth,
+  )
+  const [skyReady, setSkyReady] = useState(false)
+  const [foregroundReady, setForegroundReady] = useState(false)
+  const [cloudsReady, setCloudsReady] = useState(false)
+  const foregroundSrc =
+    viewportWidth <= 499
+      ? assetUrl(
+          showMike
+            ? 'hero-foreground-mike-mobile.png'
+            : 'hero-foreground-no-mike-mobile.png',
+        )
+      : viewportWidth <= 720
+        ? assetUrl(
+            showMike
+              ? 'hero-foreground-mike-tablet.png'
+              : 'hero-foreground-no-mike-tablet.png',
+          )
+        : assetUrl(
+            showMike
+              ? 'hero-foreground-mike-desktop.png'
+              : 'hero-foreground-no-mike-desktop.png',
+          )
   const heroStyle = {
-    '--hero-foreground-desktop-image': `url("${assetUrl(
-      showMike
-        ? 'hero-foreground-mike-desktop.png'
-        : 'hero-foreground-no-mike-desktop.png',
-    )}")`,
-    '--hero-foreground-tablet-image': `url("${assetUrl(
-      showMike
-        ? 'hero-foreground-mike-tablet.png'
-        : 'hero-foreground-no-mike-tablet.png',
-    )}")`,
-    '--hero-foreground-mobile-image': `url("${assetUrl(
-      showMike
-        ? 'hero-foreground-mike-mobile.png'
-        : 'hero-foreground-no-mike-mobile.png',
-    )}")`,
+    '--hero-sky-image': skyReady ? `url("${heroSkySrc}")` : 'none',
+    '--hero-cloud-image': cloudsReady ? `url("${heroCloudSrc}")` : 'none',
+    '--hero-foreground-active-image': foregroundReady ? `url("${foregroundSrc}")` : 'none',
   } as CSSProperties
 
   useEffect(() => {
@@ -62,6 +100,59 @@ function HeroSection({ showMike }: HeroSectionProps) {
       window.clearInterval(intervalId)
     }
   }, [])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize, { passive: true })
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    let isCancelled = false
+
+    setSkyReady(false)
+    setForegroundReady(false)
+    setCloudsReady(false)
+
+    const revealLayers = async () => {
+      await loadImage(heroSkySrc, 'high')
+
+      if (isCancelled) {
+        return
+      }
+
+      setSkyReady(true)
+
+      await loadImage(foregroundSrc, 'auto')
+
+      if (isCancelled) {
+        return
+      }
+
+      setForegroundReady(true)
+
+      await loadImage(heroCloudSrc, 'low')
+
+      if (isCancelled) {
+        return
+      }
+
+      setCloudsReady(true)
+    }
+
+    void revealLayers()
+
+    return () => {
+      isCancelled = true
+    }
+  }, [foregroundSrc])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,14 +182,24 @@ function HeroSection({ showMike }: HeroSectionProps) {
   return (
     <section className="hero-section" style={heroStyle}>
       <div className="hero-section__background" aria-hidden="true">
-        <div className="hero-section__sky" />
-        <div className="hero-section__clouds">
+        <div
+          className={`hero-section__sky${skyReady ? ' hero-section__sky--visible' : ''}`}
+        />
+        <div
+          className={`hero-section__clouds${
+            cloudsReady ? ' hero-section__clouds--visible' : ''
+          }`}
+        >
           <div className="hero-section__cloud-track">
             <span className="hero-section__cloud-panel" />
             <span className="hero-section__cloud-panel" />
           </div>
         </div>
-        <div className="hero-section__foreground" />
+        <div
+          className={`hero-section__foreground${
+            foregroundReady ? ' hero-section__foreground--visible' : ''
+          }`}
+        />
         <div className="hero-section__overlay" />
       </div>
 
