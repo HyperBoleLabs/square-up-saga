@@ -13,6 +13,7 @@ type Fighter = {
 
 type FighterSelectSectionProps = {
   showMike: boolean
+  showTiger: boolean
 }
 
 const allFighters: Fighter[] = [
@@ -21,7 +22,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/akino.gif'),
     tag: 'Power Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A disciplined powerhouse who turns every opening into a fight-ending combo.',
     stats: [
       { label: 'Attack', value: 88 },
       { label: 'Defense', value: 76 },
@@ -34,7 +35,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/bruce.gif'),
     tag: 'Brawler Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A close-range bruiser with heavy hands and no interest in backing down.',
     stats: [
       { label: 'Attack', value: 91 },
       { label: 'Defense', value: 84 },
@@ -47,7 +48,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/cage.gif'),
     tag: 'Tank Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'Built to absorb the pressure, then crush opponents with relentless counterattacks.',
     stats: [
       { label: 'Attack', value: 72 },
       { label: 'Defense', value: 94 },
@@ -60,7 +61,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/george.gif'),
     tag: 'Balanced Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'An all-round contender whose sharp instincts keep every matchup in reach.',
     stats: [
       { label: 'Attack', value: 79 },
       { label: 'Defense', value: 74 },
@@ -73,7 +74,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/mike.gif'),
     tag: 'Striker Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A lightning-fast striker who finds the gap before rivals can guard it.',
     stats: [
       { label: 'Attack', value: 86 },
       { label: 'Defense', value: 68 },
@@ -86,7 +87,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/mummy.gif'),
     tag: 'Curse Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'An ancient menace who weakens foes with eerie timing and devastating specials.',
     stats: [
       { label: 'Attack', value: 69 },
       { label: 'Defense', value: 82 },
@@ -99,7 +100,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/storm.gif'),
     tag: 'Rush Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A storm of movement and momentum—blink, and the round is already over.',
     stats: [
       { label: 'Attack', value: 83 },
       { label: 'Defense', value: 65 },
@@ -112,7 +113,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/violet.gif'),
     tag: 'Shadow Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A stealthy tactician who strikes from the dark with precision and flair.',
     stats: [
       { label: 'Attack', value: 77 },
       { label: 'Defense', value: 70 },
@@ -125,7 +126,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/agent cipher.gif'),
     tag: 'Tech Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A high-tech operative who outsmarts the arena with gadgets and calculated bursts.',
     stats: [
       { label: 'Attack', value: 74 },
       { label: 'Defense', value: 72 },
@@ -138,7 +139,7 @@ const allFighters: Fighter[] = [
     gifSrc: assetUrl('gifs/labubu.gif'),
     tag: 'Wild Type',
     description:
-      'Placeholder copy for this fighter. Swap in the final story, style, and ability notes later.',
+      'A chaotic crowd favorite whose unpredictable style makes every round electric.',
     stats: [
       { label: 'Attack', value: 84 },
       { label: 'Defense', value: 79 },
@@ -199,10 +200,15 @@ function storeEmail(email: string) {
   )
 }
 
-function FighterSelectSection({ showMike }: FighterSelectSectionProps) {
+function FighterSelectSection({ showMike, showTiger }: FighterSelectSectionProps) {
   const fighters = useMemo(
-    () => allFighters.filter((fighter) => showMike || fighter.name !== 'Mike'),
-    [showMike],
+    () =>
+      allFighters.filter(
+        (fighter) =>
+          (showMike || fighter.name !== 'Mike') &&
+          (showTiger || fighter.name !== 'Storm'),
+      ),
+    [showMike, showTiger],
   )
   const defaultFighterIndex = fighters.findIndex((fighter) => fighter.name === 'Mike')
   const [activeIndex, setActiveIndex] = useState(

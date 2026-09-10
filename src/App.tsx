@@ -4,6 +4,7 @@ import { fetchGistConfig } from './utils/fetchGistConfig'
 
 type GistConfig = {
   showMike?: boolean
+  showTiger?: boolean
 }
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     void loadConfig()
   }, [])
 
-  return <Home showMike={config.showMike ?? true} />
+  return <Home showMike={config.showMike ?? false} showTiger={config.showTiger ?? false} />
 }
 
 export default App

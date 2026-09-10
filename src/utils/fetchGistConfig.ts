@@ -6,6 +6,14 @@ function extractGistId(url: string) {
   return segments[segments.length - 1]
 }
 
+function parseGistConfig(content: string) {
+  // Accept JSONC-style trailing commas so a simple hand-edited Gist config
+  // continues to work, while still parsing the result as JSON.
+  const normalizedContent = content.replace(/,(\s*[}\]])/g, '$1')
+
+  return JSON.parse(normalizedContent)
+}
+
 export async function fetchGistConfig() {
   const gistId = extractGistId(gistUrl)
   const response = await fetch(`https://api.github.com/gists/${gistId}`)
@@ -27,6 +35,5 @@ export async function fetchGistConfig() {
     throw new Error('No gist config file content found')
   }
 
-  return JSON.parse(configFile.content)
+  return parseGistConfig(configFile.content)
 }
-

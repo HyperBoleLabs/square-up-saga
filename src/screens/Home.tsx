@@ -8,15 +8,16 @@ const FeaturesSection = lazy(() => import('../components/FeaturesSection'))
 
 type HomeProps = {
   showMike: boolean
+  showTiger: boolean
 }
 
-function Home({ showMike }: HomeProps) {
+function Home({ showMike, showTiger }: HomeProps) {
   return (
     <main className="page-shell">
       <HeroSection showMike={showMike} />
       <DeferredSection minHeight="72rem" rootMargin="0px 0px">
         <Suspense fallback={<div className="deferred-section-placeholder" aria-hidden="true" />}>
-          <FighterSelectSection showMike={showMike} />
+          <FighterSelectSection showMike={showMike} showTiger={showTiger} />
         </Suspense>
       </DeferredSection>
       <DeferredSection minHeight="88rem">
