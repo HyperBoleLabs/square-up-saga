@@ -3,7 +3,7 @@ import HeroHeader from './HeroHeader'
 import './HeroSection.css'
 import { assetUrl } from '../utils/assetUrl'
 
-const launchDate = new Date('2026-09-14T00:00:00')
+const launchDate = new Date('2026-10-14T00:00:00')
 
 function getTimeRemaining(targetDate: Date) {
   const now = new Date()
