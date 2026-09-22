@@ -161,7 +161,7 @@ function HeroSection({ showMike }: HeroSectionProps) {
             the arena in Square Up Saga.
           </p>
 
-          <p className="hero-section__launch-note">Launching September 14</p>
+          <p className="hero-section__launch-note">Launching October 14</p>
 
           <div className="hero-section__countdown" aria-label="Launch countdown">
             {countdownItems.map((item) => (
